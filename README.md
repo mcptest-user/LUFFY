@@ -133,7 +133,8 @@ chat = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_pr
 llm = LLM(model=model_path)
 params = SamplingParams(temperature=0.6, max_tokens=8192)
 outputs = llm.generate([chat], params)
-print(outputs[0].outputs[0].text)```
+print(outputs[0].outputs[0].text)
+```
 
 </details>
 
