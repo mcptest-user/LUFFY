@@ -12,6 +12,7 @@ setup(
         'sentence_transformers',
         'tabulate',
         'math-verify[antlr4_9_3]==0.6.0',
+        'flash_attn==2.7.3',
     ],
     classifiers=[
         'Programming Language :: Python :: 3',
