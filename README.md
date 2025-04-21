@@ -114,7 +114,7 @@ We provide an example script to train LUFFY on our subset of OpenR1-Math-220k. Y
 
 ## Inference
 
-LUFFY supports both math and reasoning tasks. Here’s an example of using LUFFY for inference:
+Here’s an example of using LUFFY for inference:
 
 <details>
 <summary>Click to view inference example</summary>
