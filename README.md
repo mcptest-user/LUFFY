@@ -66,7 +66,11 @@ pip install -e .
 ```
 
 If you encounter issues when installing flash-attn, we recommend you to install it here 
-[flash-attn](https://github.com/Dao-AILab/flash-attention/releases/tag/v2.7.3).
+[flash-attn](https://github.com/Dao-AILab/flash-attention/releases/tag/v2.7.3). For example, we use this version. 
+```bash
+wget https://github.com/Dao-AILab/flash-attention/releases/download/v2.7.3/flash_attn-2.7.3+cu12torch2.4cxx11abiFALSE-cp310-cp310-linux_x86_64.whl
+pip install flash_attn-2.7.3+cu12torch2.4cxx11abiFALSE-cp310-cp310-linux_x86_64.whl
+```
 
 ## Repo Structure
 
