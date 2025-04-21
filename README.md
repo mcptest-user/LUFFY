@@ -114,7 +114,8 @@ python prepare_train.py
 We provide an example script to train LUFFY on our subset of OpenR1-Math-220k. You can run the following command to train LUFFY:
 
 ```bash
-  bash exp_scripts/train.sh
+  cd exp_scripts
+  bash train.sh
 ```
 
 ## Inference
