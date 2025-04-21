@@ -5,7 +5,7 @@ eval "$(conda shell.bash hook)"
 conda activate luffy
 
 # NOTE: change to your root dir
-ROOT=./LUFFY-Reasoning/ 
+ROOT=./LUFFY/ 
 
 ray stop 
 
