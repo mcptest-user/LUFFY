@@ -2,7 +2,7 @@
 
 
 <h1 style="display: flex; justify-content: center; align-items: center; gap: 10px; margin: 0;">
-  <img src="./figures/luffy_logo.png" alt="LUFFY Icon" width="50">
+  <img src="./figures/luffy_icon.png" alt="LUFFY Icon" width="50">
   LUFFY: Learning to Reason Under Off‑Policy Guidance
 </h1>
 
