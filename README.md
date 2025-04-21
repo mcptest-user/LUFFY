@@ -37,15 +37,16 @@
 
 # 🎉News
 
+- **[2025/04/20]** The models and datasets are released on [HuggingFace](https://huggingface.co/collections/Elliott/luffy-rl-6804e1f5d1ebe66ba8ac92f4).
 - **[2025/04/20]** LUFFY codebase is released along with evaluation scripts. Try it out!
-- **[2025/04/20]** LUFFY paper available on [arXiv](https://arxiv.org/abs/2504.xxxxx). See our benchmarks and insights into off-policy reasoning!
+- **[2025/04/20]** LUFFY paper available on [arXiv](https://arxiv.org/abs/2504.xxxxx). 
 
 ---
 
 # 🔗Links
 
 - 📜 [Paper (arXiv)](https://arxiv.org/abs/2504.xxxxx)  
-- 🤗 [HuggingFace Collection](https://huggingface.co/YOUR_ORG/LUFFY)
+- 🤗 [HuggingFace Collection](https://huggingface.co/collections/Elliott/luffy-rl-6804e1f5d1ebe66ba8ac92f4)
 
 ---
 
