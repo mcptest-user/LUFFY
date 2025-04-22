@@ -45,7 +45,7 @@
 
 # 🔗Links
 
-- 📜 [Paper (arXiv)](https://arxiv.org/abs/2504.xxxxx)  
+- 📜 [Paper (arXiv)](https://arxiv.org/abs/2504.14945)  
 - 🤗 [HuggingFace Collection](https://huggingface.co/collections/Elliott/luffy-rl-6804e1f5d1ebe66ba8ac92f4)
 
 ---
