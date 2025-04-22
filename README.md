@@ -161,8 +161,6 @@ LUFFY is evaluated on six competition-level benchmarks, achieving state-of-the-a
 | OpenReasoner-Zero                 | 17.2        | 15.0        | 52.3    | 84.6          | 33.8        | 47.1          | 41.7     |
 | PRIME-Zero                        | 17.9        | 14.7        | 55.2    | 79.4          | **38.2**    | 42.2          | 41.3     |
 | Oat-Zero                          | **31.7**    | 11.0        | 61.6    | 79.2          | 29.8        | 42.5          | 42.6     |
-| SFT (Our replication)             | 28.6        | **23.5**    | 59.0    | 86.0          | 37.5        | 51.1          | 47.6     |
-| On-Policy RL (Our replication)    | 24.6        | 15.7        | 61.3    | 84.6          | 34.9        | 47.9          | 44.8     |
 | **LUFFY**                         | 29.5        | 23.2        | **66.1**| **88.4**      | 33.8        | **56.4**      | **49.6** |
 
 ---
@@ -177,11 +175,9 @@ LUFFY also generalizes well to out-of-distribution tasks, with over +6.2 average
 | Qwen2.5-Math-7B-Base             | 18.2      | 11.1             | 16.9         | 15.4     |
 | Qwen2.5-Math-7B-Instruct         | 70.3      | 24.7             | 34.1         | 43.0     |
 | SimpleRL-Zero                    | 30.2      | 23.2             | 34.5         | 29.3     |
-| OpenReasoner-Zero                | 66.2      | 29.8             | 58.7         | 51.6     |
 | PRIME-Zero                       | 73.3      | 18.2             | 32.7         | 41.4     |
 | Oat-Zero                         | 70.1      | 23.7             | 41.7         | 45.2     |
-| SFT (Our replication)            | 75.2      | 24.7             | 42.7         | 47.5     |
-| On-Policy RL (Our replication)   | **82.3**  | **40.4**         | _49.3_       | _57.3_   |
+| OpenReasoner-Zero                | 66.2      | 29.8             | 58.7         | 51.6     |
 | **LUFFY**                        | _80.5_    | _39.9_           | **53.0**     | **57.8** |
 
 ---
