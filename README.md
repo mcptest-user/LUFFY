@@ -218,3 +218,17 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 python eval_scripts/generate_vllm.py \
 # 🌻Acknowledgement
 
 LUFFY builds upon [veRL](https://github.com/volcengine/verl) and [deepscaler](https://github.com/agentica-project/rllm), and utilizes [vLLM](https://github.com/vllm-project/vllm) for inference. We utilize [Math-Verify](https://github.com/huggingface/Math-Verify) for math reasoning evaluation. We thank the open-source community for datasets and backbones, including [NuminaMath](https://huggingface.co/datasets/AI-MO/NuminaMath-CoT), [OpenR1-Math-220k](https://huggingface.co/datasets/open-r1/OpenR1-Math-220k), [Qwen2.5-Math](https://github.com/QwenLM/Qwen2.5-Math), and [DeepSeek-R1](https://github.com/deepseek-ai/deepseek-r1) model. 
+
+# Citation
+If you find our model, data, or evaluation code useful, please kindly cite our paper:
+```bib
+@misc{luffy,
+      title={Learning to Reason under Off-Policy Guidance}, 
+      author={Jianhao Yan and Yafu Li and Zican Hu and Zhi Wang and Ganqu Cui and Xiaoye Qu and Yu Cheng and Yue Zhang},
+      year={2025},
+      eprint={2504.14945},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2504.14945}, 
+}
+```
