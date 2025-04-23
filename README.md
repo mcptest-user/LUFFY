@@ -36,7 +36,8 @@
 ---
 
 # 🎉News
-
+- **[2025/04/23]** Our paper now available on [alphaXiv](https://www.alphaxiv.org/abs/2504.14945)! We welcome feedback and discussion.
+- **[2025/04/23]** 🎉 #1 of the day on [Huggingface Daily Papers](https://huggingface.co/papers/2504.14945).
 - **[2025/04/20]** The models and datasets are released on [HuggingFace](https://huggingface.co/collections/Elliott/luffy-rl-6804e1f5d1ebe66ba8ac92f4).
 - **[2025/04/20]** LUFFY codebase is released along with evaluation scripts. Try it out!
 - **[2025/04/20]** LUFFY paper available on [arXiv](http://arxiv.org/abs/2504.14945). 
