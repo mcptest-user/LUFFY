@@ -162,7 +162,7 @@ LUFFY is evaluated on six competition-level benchmarks, achieving state-of-the-a
 | OpenReasoner-Zero                 | 17.2        | 15.0        | 52.3    | 84.6          | 33.8        | 47.1          | 41.7     |
 | PRIME-Zero                        | 17.9        | 14.7        | 55.2    | 79.4          | **38.2**    | 42.2          | 41.3     |
 | Oat-Zero                          | **31.7**    | 11.0        | 61.6    | 79.2          | 29.8        | 42.5          | 42.6     |
-| **LUFFY**                         | 29.5        | 23.2        | **66.1**| **88.4**      | 33.8        | **56.4**      | **49.6** |
+| **LUFFY-Zero**                         | 29.5        | 23.2        | **66.1**| **88.4**      | 33.8        | **56.4**      | **49.6** |
 
 ---
 
@@ -179,7 +179,7 @@ LUFFY also generalizes well to out-of-distribution tasks, with over +6.2 average
 | PRIME-Zero                       | 73.3      | 18.2             | 32.7         | 41.4     |
 | Oat-Zero                         | 70.1      | 23.7             | 41.7         | 45.2     |
 | OpenReasoner-Zero                | 66.2      | 29.8             | 58.7         | 51.6     |
-| **LUFFY**                        | _80.5_    | _39.9_           | **53.0**     | **57.8** |
+| **LUFFY-Zero**                        | _80.5_    | _39.9_           | **53.0**     | **57.8** |
 
 ---
 
