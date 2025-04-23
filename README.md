@@ -150,14 +150,15 @@ print(outputs[0].outputs[0].text)
 
 # 📃Evaluation
 
+## LUFFY on Qwen2.5-Math-7B
 LUFFY is evaluated on six competition-level benchmarks, achieving state-of-the-art results among all zero-RL methods. It surpasses both on-policy RL and imitation learning (SFT), especially in generalization:
 
 
 
 | **Model**                          | **AIME 2024** | **AIME 2025** | **AMC** | **MATH-500** | **Minerva** | **Olympiad** | **Avg.** |
 |-----------------------------------|-------------|-------------|---------|---------------|-------------|---------------|----------|
-| Qwen2.5-Math                      | 12.9        | 4.2         | 32.6    | 48.8          | 10.7        | 14.8          | 20.7     |
-| Qwen2.5-Math-Instruct             | 11.4        | 8.8         | 48.3    | 81.2          | 33.1        | 38.8          | 36.9     |
+| Qwen2.5-Math-7B                      | 12.9        | 4.2         | 32.6    | 48.8          | 10.7        | 14.8          | 20.7     |
+| Qwen2.5-Math-7B-Instruct             | 11.4        | 8.8         | 48.3    | 81.2          | 33.1        | 38.8          | 36.9     |
 | SimpleRL-Zero                     | 26.3        | 6.7         | 55.4    | 74.4          | 25.7        | 35.4          | 37.3     |
 | OpenReasoner-Zero                 | 17.2        | 15.0        | 52.3    | 84.6          | 33.8        | 47.1          | 41.7     |
 | PRIME-Zero                        | 17.9        | 14.7        | 55.2    | 79.4          | **38.2**    | 42.2          | 41.3     |
@@ -173,7 +174,7 @@ LUFFY also generalizes well to out-of-distribution tasks, with over +6.2 average
 
 | **Model**                         | **ARC-c** | **GPQA-diamond** | **MMLU-Pro** | **Avg.** |
 |----------------------------------|-----------|------------------|--------------|----------|
-| Qwen2.5-Math-7B-Base             | 18.2      | 11.1             | 16.9         | 15.4     |
+| Qwen2.5-Math-7B             | 18.2      | 11.1             | 16.9         | 15.4     |
 | Qwen2.5-Math-7B-Instruct         | 70.3      | 24.7             | 34.1         | 43.0     |
 | SimpleRL-Zero                    | 30.2      | 23.2             | 34.5         | 29.3     |
 | PRIME-Zero                       | 73.3      | 18.2             | 32.7         | 41.4     |
@@ -182,6 +183,17 @@ LUFFY also generalizes well to out-of-distribution tasks, with over +6.2 average
 | **LUFFY-Zero**                        | _80.5_    | _39.9_           | **53.0**     | **57.8** |
 
 ---
+
+## LUFFY on Qwen2.5-Math-1.5B
+| **Model**                          | **AIME 2024** | **AIME 2025** | **AMC** | **MATH-500** | **Minerva** | **Olympiad** | **Avg.** |
+|-----------------------------------|-------------|-------------|---------|---------------|-------------|---------------|----------|
+| Qwen2.5-Math-1.5B                  |   7.9 | 4.7 | 26.4 | 31.0 | 12.1 | 21.5 | 17.3 |
+| Qwen2.5-Math-1.5B-Instruct            |  11.4 | 8.5 | 47.4 | 75.2 | 27.6 | 38.7 | 34.8 |
+| **LUFFY-Zero**             | **15.2** | **12.7** |  **46.8** | **79.4** | **26.5** |  **42.4**  | **42.1** |
+
+## LUFFY on Qwen2.5-Instruct-7B
+| Qwen2.5-7B-Instruct           | 11.9 | 7.6 | 44.1 | 74.6 | 30.5 | 39.7 | 34.7 |
+| **LUFFY**             | **16.6** | **15.7** | **52.2**  | **81.4**  | **36.8**  | **48.7**  | **41.9** |
 
 ## Reproducing the Results 
 You can reproduce our results by running the following commands:
