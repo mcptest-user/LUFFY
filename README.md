@@ -189,7 +189,7 @@ LUFFY also generalizes well to out-of-distribution tasks, with over +6.2 average
 | PRIME-Zero                       | 73.3      | 18.2             | 32.7         | 41.4     |
 | Oat-Zero                         | 70.1      | 23.7             | 41.7         | 45.2     |
 | OpenReasoner-Zero                | 66.2      | 29.8             | 58.7         | 51.6     |
-| **LUFFY-Qwen-Math-7B-Zero**                        | _80.5_    | _39.9_           | **53.0**     | **57.8** |
+| **LUFFY-Qwen-Math-7B-Zero**                        | **80.5**    | **39.9**          | **53.0**     | **57.8** |
 
 ---
 
