@@ -242,7 +242,7 @@ LUFFY builds upon [veRL](https://github.com/volcengine/verl) and [deepscaler](ht
 # 📬 Contact
 
 For questions, feedback, or collaboration opportunities, feel free to reach out:
-- Jianhao Yan: elliotyan37@gmail.com
+- Jianhao Yan: elliottyan37@gmail.com
 - Yafu Li: yafuly@gmail.com
 
 # Citation
