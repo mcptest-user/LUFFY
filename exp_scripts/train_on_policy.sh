@@ -78,11 +78,9 @@ python3 -m verl.mix_src.main_mix_ppo \
     actor_rollout_ref.ref.use_ref=False \
     actor_rollout_ref.actor.use_off_policy_loss=True \
     actor_rollout_ref.actor.off_policy_normalize=False \
-    actor_rollout_ref.actor.off_policy_reshape="p_div_p_0.1" \
     actor_rollout_ref.actor.off_policy_loss_impl=token \
     algorithm.grpo_use_std=False \
     actor_rollout_ref.actor.loss_remove_token_mean=True \
-    actor_rollout_ref.actor.loss_remove_clip=True \
     data.reward_impl_version=3 \
     trainer.max_optim_to_keep=2 \
     data.shuffle=True \

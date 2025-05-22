@@ -7,11 +7,12 @@
 </h1>
 
 <div align="center">
-  <img src="./figures/luffy_intro.jpg" alt="overview" style="width: 66%; height: auto;">
+  <img src="./figures/luffy_intro_new.jpg" alt="overview" style="width: 66%; height: auto;">
 </div>
 
 
-[![Paper](https://img.shields.io/badge/paper-A42C25?style=for-the-badge&logo=arxiv&logoColor=white)](http://arxiv.org/abs/2504.14945)  [![Github](https://img.shields.io/badge/LUFFY-000000?style=for-the-badge&logo=github&logoColor=000&logoColor=white)](https://github.com/ElliottYan/LUFFY)   [![Hugging Face Collection](https://img.shields.io/badge/LUFFY_Collection-fcd022?style=for-the-badge&logo=huggingface&logoColor=000)](https://huggingface.co/collections/Elliott/luffy-rl-6804e1f5d1ebe66ba8ac92f4) [![Twitter](https://img.shields.io/badge/Twitter-%23000000.svg?style=for-the-badge&logo=twitter&logoColor=white)](https://x.com/yafuly/status/1914559433549676962)
+[![Paper](https://img.shields.io/badge/paper-A42C25?style=for-the-badge&logo=arxiv&logoColor=white)](http://arxiv.org/abs/2504.14945) [![alphaXiv](https://img.shields.io/badge/discussion-A42C25?style=for-the-badge&logo=arxiv&logoColor=white&color=blue
+)](https://www.alphaxiv.org/abs/2504.14945) [![Github](https://img.shields.io/badge/LUFFY-000000?style=for-the-badge&logo=github&logoColor=000&logoColor=white)](https://github.com/ElliottYan/LUFFY)   [![Hugging Face Collection](https://img.shields.io/badge/LUFFY_Collection-fcd022?style=for-the-badge&logo=huggingface&logoColor=000)](https://huggingface.co/collections/Elliott/luffy-rl-6804e1f5d1ebe66ba8ac92f4) [![Twitter](https://img.shields.io/badge/Twitter-%23000000.svg?style=for-the-badge&logo=twitter&logoColor=white)](https://x.com/yafuly/status/1914559433549676962)
 
 <div align="center" style="font-family: Arial, sans-serif; font-size: 16px;">
   <p>
@@ -36,7 +37,9 @@
 ---
 
 # 🎉News
-
+- **[2025/05/21]** We have updated the paper [version](https://arxiv.org/abs/2504.14945), which re-evaluates all models using a more accurate verifier and comparisons with other off-policy learning methods, including RL with SFT Loss and SFT+RL.
+- **[2025/04/23]** Our paper now available on [alphaXiv](https://www.alphaxiv.org/abs/2504.14945)! We welcome feedback and discussion.
+- **[2025/04/23]** 🎉 Ranked **#1** of the day on [Huggingface Daily Papers](https://huggingface.co/papers/2504.14945).
 - **[2025/04/20]** The models and datasets are released on [HuggingFace](https://huggingface.co/collections/Elliott/luffy-rl-6804e1f5d1ebe66ba8ac92f4).
 - **[2025/04/20]** LUFFY codebase is released along with evaluation scripts. Try it out!
 - **[2025/04/20]** LUFFY paper available on [arXiv](http://arxiv.org/abs/2504.14945). 
@@ -145,23 +148,33 @@ print(outputs[0].outputs[0].text)
 
 </details>
 
+
+## Models
+
+| **Model**                          | **Huggingface** |  **Base Model** |
+|-----------------------------------|------------------|------------------|
+| LUFFY-Qwen-Math-7B-Zero | https://huggingface.co/Elliott/LUFFY-Qwen-Math-7B-Zero |  Qwen2.5-Math-7B |
+| LUFFY-Qwen-Math-1.5B-Zero | https://huggingface.co/Elliott/LUFFY-Qwen-Math-1.5B-Zero | Qwen2.5-Math-1.5B |
+| LUFFY-Qwen-Instruct-7B | https://huggingface.co/Elliott/LUFFY-Qwen-Instruct-7B | Qwen2.5-7B-Instruct |
+
 ---
 
 # 📃Evaluation
 
+## LUFFY on Qwen2.5-Math-7B (zero-RL)
 LUFFY is evaluated on six competition-level benchmarks, achieving state-of-the-art results among all zero-RL methods. It surpasses both on-policy RL and imitation learning (SFT), especially in generalization:
 
 
 
 | **Model**                          | **AIME 2024** | **AIME 2025** | **AMC** | **MATH-500** | **Minerva** | **Olympiad** | **Avg.** |
 |-----------------------------------|-------------|-------------|---------|---------------|-------------|---------------|----------|
-| Qwen2.5-Math                      | 12.9        | 4.2         | 32.6    | 48.8          | 10.7        | 14.8          | 20.7     |
-| Qwen2.5-Math-Instruct             | 11.4        | 8.8         | 48.3    | 81.2          | 33.1        | 38.8          | 36.9     |
-| SimpleRL-Zero                     | 26.3        | 6.7         | 55.4    | 74.4          | 25.7        | 35.4          | 37.3     |
-| OpenReasoner-Zero                 | 17.2        | 15.0        | 52.3    | 84.6          | 33.8        | 47.1          | 41.7     |
-| PRIME-Zero                        | 17.9        | 14.7        | 55.2    | 79.4          | **38.2**    | 42.2          | 41.3     |
-| Oat-Zero                          | **31.7**    | 11.0        | 61.6    | 79.2          | 29.8        | 42.5          | 42.6     |
-| **LUFFY**                         | 29.5        | 23.2        | **66.1**| **88.4**      | 33.8        | **56.4**      | **49.6** |
+| Qwen2.5-Math-7B                      |11.5 | 4.9 | 31.3 | 43.6 | 7.4 | 15.6 | 19.0 |
+| Qwen2.5-Math-7B-Instruct             |12.5  | 10.2 | 48.5 | 80.4 | 32.7 | 41.0 | 37.6   |
+| SimpleRL-Zero                     | 27.0 | 6.8  | 54.9 | 76.0 | 25.0 | 34.7 | 37.4     |
+| OpenReasoner-Zero                 | 16.5 | 15.0 | 52.1 | 82.4 | 33.1 | 47.1 | 41.0    |
+| PRIME-Zero                        | 17.0 | 12.8 | 54.0 | 81.4 | **39.0** | 40.3 | 40.7    |
+| Oat-Zero                          | **33.4**  | 11.9 | 61.2 | 78.0 | 34.6 | 43.4 | 43.7   |
+| **LUFFY-Qwen-Math-7B-Zero**                         | 29.4        | **23.1**        | **65.6**| **87.6**      | 37.5        | **57.2**      | **50.1** |
 
 ---
 
@@ -172,15 +185,41 @@ LUFFY also generalizes well to out-of-distribution tasks, with over +6.2 average
 
 | **Model**                         | **ARC-c** | **GPQA-diamond** | **MMLU-Pro** | **Avg.** |
 |----------------------------------|-----------|------------------|--------------|----------|
-| Qwen2.5-Math-7B-Base             | 18.2      | 11.1             | 16.9         | 15.4     |
-| Qwen2.5-Math-7B-Instruct         | 70.3      | 24.7             | 34.1         | 43.0     |
-| SimpleRL-Zero                    | 30.2      | 23.2             | 34.5         | 29.3     |
-| PRIME-Zero                       | 73.3      | 18.2             | 32.7         | 41.4     |
-| Oat-Zero                         | 70.1      | 23.7             | 41.7         | 45.2     |
-| OpenReasoner-Zero                | 66.2      | 29.8             | 58.7         | 51.6     |
-| **LUFFY**                        | _80.5_    | _39.9_           | **53.0**     | **57.8** |
+| Qwen2.5-Math-7B             | 18.2 | 11.1 | 16.9 | 15.4  |
+| Qwen2.5-Math-7B-Instruct         | 70.3 | 24.7 | 34.1 | 43.0    |
+| SimpleRL-Zero                    | 30.2 | 23.2 | 34.5 | 29.3     |
+| OpenReasoner-Zero                       | 66.2 | 29.8 | 58.7 | 51.6     |
+| PRIME-Zero                         | 73.3 | 18.2 | 32.7 | 41.4   |
+| Oat-Zero                | 70.1 | 23.7 | 41.7 | 45.2    |
+| **LUFFY-Qwen-Math-7B-Zero**                        | **80.5** |  **39.9** | **53.0** | **57.8** |
+
+
+We further compare LUFFY with alternative off-policy learning methods, including SFT, RL w/ SFT Loss and SFT+RL (see our paper for details):
+
+| **Model**                          | **GPU Hours** | **Data Usage (On/Off)** | **AIME 2024** | **AIME 2025** | **AMC** | **MATH-500** | **Minerva** | **Olympiad** | **Avg.** |
+|-----------------------------------|-------------|-------------|-------------|-------------|---------|---------------|-------------|---------------|----------|
+| SFT                      | 24*8 | 0 / 64k | 22.2 | 22.3 | 52.8 | 82.6 | 40.8 | 43.7 | 44.1 |
+| RL w/ SFT Loss             |  133*8    | 64k*7 / 64k  |  19.5 | 16.4 | 49.7 | 80.4 | 34.9 | 39.4 | 40.1  |
+| SFT+RL                      | 130*8 |  64k*8/135k |  25.8 | **23.1** | 62.7 | 87.2 | 39.7 | 50.4 | 48.2 |
+| **LUFFY-Qwen-Math-7B-Zero**            | 77*8 | 64k*7 / 64k              | 29.4        | **23.1**        | 65.6 | **87.6**      | 37.5        | **57.2**      | 50.1 |
+| **LUFFY-Qwen-Math-7B-Zero-Extra**       |    130*8       |   110k*7 / 110k      | **30.7** | 22.5 | **66.2**|  86.8 | **41.2** | 55.3 | **50.4** |
 
 ---
+
+## LUFFY on Qwen2.5-Math-1.5B
+| **Model**                          | **AIME 2024** | **AIME 2025** | **AMC** | **MATH-500** | **Minerva** | **Olympiad** | **Avg.** |
+|-----------------------------------|-------------|-------------|---------|---------------|-------------|---------------|----------|
+| Qwen2.5-Math-1.5B                  |   7.2 |  3.6 | 26.4 | 28.0 | 9.6 | 21.2 | 16.0 |
+| Qwen2.5-Math-1.5B-Instruct            |  12.1 | 8.9 | 48.1 | 77.4 | 28.7 | 39.1 | 35.7 |
+| **LUFFY-Qwen-Math-1.5B-Zero**             | **16.0** | **13.1** | **47.1** | **80.2** | **30.5** | **41.0** | **38.0** |
+
+
+
+## LUFFY on Qwen2.5-Instruct-7B 
+| **Model**                          | **AIME 2024** | **AIME 2025** | **AMC** | **MATH-500** | **Minerva** | **Olympiad** | **Avg.** |
+|-----------------------------------|-------------|-------------|---------|---------------|-------------|---------------|----------|
+| Qwen2.5-7B-Instruct           | 11.7 | 7.5 | 43.8 | 71.8 | 30.9 | 40.4|  34.4|
+| **LUFFY-Qwen-Instruct-7B**             | **17.7** |  **14.8** | **50.9** | **82.0** | **31.3** | **47.4** | **40.7** |
 
 ## Reproducing the Results 
 You can reproduce our results by running the following commands:
@@ -214,6 +253,12 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 python eval_scripts/generate_vllm.py \
 # 🌻Acknowledgement
 
 LUFFY builds upon [veRL](https://github.com/volcengine/verl) and [deepscaler](https://github.com/agentica-project/rllm), and utilizes [vLLM](https://github.com/vllm-project/vllm) for inference. We utilize [Math-Verify](https://github.com/huggingface/Math-Verify) for math reasoning evaluation. We thank the open-source community for datasets and backbones, including [NuminaMath](https://huggingface.co/datasets/AI-MO/NuminaMath-CoT), [OpenR1-Math-220k](https://huggingface.co/datasets/open-r1/OpenR1-Math-220k), [Qwen2.5-Math](https://github.com/QwenLM/Qwen2.5-Math), and [DeepSeek-R1](https://github.com/deepseek-ai/deepseek-r1) model. 
+
+# 📬 Contact
+
+For questions, feedback, or collaboration opportunities, feel free to reach out:
+- Jianhao Yan: elliottyan37@gmail.com
+- Yafu Li: yafuly@gmail.com
 
 # Citation
 If you find our model, data, or evaluation code useful, please kindly cite our paper:
