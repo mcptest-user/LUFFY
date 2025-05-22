@@ -246,6 +246,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 python eval_scripts/generate_vllm.py \
   --model_path $MODEL_PATH \
   --input_file $DATA \
   --remove_system True \
+  --add_oat_evaluate True \
   --output_file $OUTPUT_DIR/$MODEL_NAME.jsonl \
   --template $TEMPLATE > $OUTPUT_DIR/$MODEL_NAME.log
 ```
