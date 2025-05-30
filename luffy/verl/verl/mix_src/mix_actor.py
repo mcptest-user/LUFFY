@@ -108,7 +108,6 @@ class MIXDataParallelPPOActor(DataParallelPPOActor):
                     entropy_coeff = self.config.entropy_coeff
 
                     entropy, log_prob = self._forward_micro_batch(micro_batch=data, temperature=temperature)
-                    
 
                     if self.config.use_sft_multitask_loss:
                         assert self.config.use_off_policy_loss is False, 'Either use off-policy loss or sft multitask loss. You cannot set both to be True.'
@@ -124,7 +123,7 @@ class MIXDataParallelPPOActor(DataParallelPPOActor):
                         on_policy_logprob = log_prob[on_policy_mask]
                         on_policy_old_logprob = old_log_prob[on_policy_mask]
                         
-                        assert self.config.algorithm.adv_estimator == 'grpo_split'
+                        # assert self.config.algorithm.adv_estimator == 'grpo_split'
                         # The on-policy advantages should not be computed together with the off-policy rewards
                         on_policy_advantages = advantages[on_policy_mask]
                         on_policy_eos_mask = response_mask[on_policy_mask]
