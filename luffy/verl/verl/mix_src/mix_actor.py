@@ -110,7 +110,37 @@ class MIXDataParallelPPOActor(DataParallelPPOActor):
                     entropy, log_prob = self._forward_micro_batch(micro_batch=data, temperature=temperature)
                     
 
-                    if self.config.use_off_policy_loss:
+                    if self.config.use_sft_multitask_loss:
+                        assert self.config.use_off_policy_loss, 'Either use off-policy loss or sft multitask loss. You cannot set both to be True.'
+                        from .mix_core_alg import compute_sft_pure_loss
+                        off_policy_mask = data['prefix_mask'].any(-1) # [No]
+                        off_policy_logprob = log_prob[off_policy_mask]
+                        off_policy_eos_mask = response_mask[off_policy_mask]
+                        
+                        sft_loss = compute_sft_pure_loss(log_prob=off_policy_logprob,
+                                                        eos_mask=off_policy_eos_mask)
+                        
+                        on_policy_mask = ~off_policy_mask
+                        on_policy_logprob = log_prob[on_policy_mask]
+                        on_policy_old_logprob = old_log_prob[on_policy_mask]
+                        
+                        assert self.config.algorithm.adv_estimator == 'grpo_split'
+                        # The on-policy advantages should not be computed together with the off-policy rewards
+                        on_policy_advantages = advantages[on_policy_mask]
+                        on_policy_eos_mask = response_mask[on_policy_mask]
+                        
+                        pg_loss, pg_clipfrac, ppo_kl = core_algos.compute_policy_loss(
+                            old_log_prob=on_policy_old_logprob, log_prob=on_policy_logprob,
+                            advantages=on_policy_advantages,
+                            eos_mask=on_policy_eos_mask,
+                            cliprange=clip_ratio,
+                            loss_remove_token_mean=self.config.loss_remove_token_mean,
+                            loss_remove_clip=self.config.loss_remove_clip
+                        )
+                        
+                        pg_loss = sft_loss * self.config.sft_loss_coef + pg_loss
+
+                    elif self.config.use_off_policy_loss:
                         from .mix_core_alg import compute_token_on_off_policy_loss
                         loss_fn = compute_token_on_off_policy_loss
 

@@ -4,6 +4,68 @@ from collections import defaultdict
 
 import verl.utils.torch_functional as verl_F
 
+def compute_sft_pure_loss(log_prob, eos_mask):
+    sft_losses = -log_prob
+    sft_loss = verl_F.masked_mean(sft_losses, eos_mask)
+    return sft_loss
+
+def compute_grpo_outcome_advantage_split(token_level_rewards: torch.Tensor,
+                                   eos_mask: torch.Tensor,
+                                   index: torch.Tensor,
+                                   on_policy_mask: torch.Tensor,
+                                   epsilon: float = 1e-6,
+                                   use_std: bool = True):
+    """
+    Compute advantage for GRPO, operating only on Outcome reward 
+    (with only one scalar reward for each response).
+    Args:
+        token_level_rewards: `(torch.Tensor)`
+            shape: (bs, response_length)
+        eos_mask: `(torch.Tensor)`
+            shape: (bs, response_length)
+    
+    Returns:
+        advantages: `(torch.Tensor)`
+            shape: (bs, response_length)
+        Returns: `(torch.Tensor)`
+            shape: (bs, response_length)
+    """
+    response_length = token_level_rewards.shape[-1]
+    non_zero_mask = (token_level_rewards != 0)
+    scores = (token_level_rewards * non_zero_mask).sum(dim=-1)
+
+    id2score = defaultdict(list)
+    id2mean = {}
+    id2std = {}
+
+    with torch.no_grad():
+        bsz = scores.shape[0]
+        for i in range(bsz):
+            # only include on-policy samples for mean and std calculation
+            if on_policy_mask[i].item() is True:
+                id2score[index[i]].append(scores[i])
+        for idx in id2score:
+            if len(id2score[idx]) == 1:
+                id2mean[idx] = torch.tensor(0.0)
+                id2std[idx] = torch.tensor(1.0)
+            elif len(id2score[idx]) > 1:
+                id2mean[idx] = torch.mean(torch.tensor(id2score[idx]))
+                id2std[idx] = torch.std(torch.tensor([id2score[idx]]))
+            else:
+                raise ValueError(f"no score in prompt index: {idx}")
+        # process std
+        for idx in id2std:
+            if id2std[idx].item() == 0:
+                id2std[idx] = torch.tensor(1.0)
+        for i in range(bsz):
+            if use_std:
+                scores[i] = (scores[i] - id2mean[index[i]]) / (id2std[index[i]] + epsilon)
+            else:
+                scores[i] = (scores[i] - id2mean[index[i]])
+        scores = scores.unsqueeze(-1).tile([1, response_length]) * eos_mask
+
+    return scores, scores
+
 def compute_token_on_off_policy_loss(
     old_log_prob, 
     log_prob, 
