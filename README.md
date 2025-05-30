@@ -171,7 +171,7 @@ deepspeed --master_port=$MASTER_PORT --master_addr=$MASTER_ADDR --include localh
 ### RL w/ SFT Loss
 ```bash
   cd exp_scripts
-  bash train_sft_multitask.sh
+  bash train_rl_sft_loss.sh
 ```
 
 ### SFT + RL
