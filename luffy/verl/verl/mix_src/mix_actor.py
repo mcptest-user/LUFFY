@@ -111,7 +111,7 @@ class MIXDataParallelPPOActor(DataParallelPPOActor):
                     
 
                     if self.config.use_sft_multitask_loss:
-                        assert self.config.use_off_policy_loss, 'Either use off-policy loss or sft multitask loss. You cannot set both to be True.'
+                        assert self.config.use_off_policy_loss is False, 'Either use off-policy loss or sft multitask loss. You cannot set both to be True.'
                         from .mix_core_alg import compute_sft_pure_loss
                         off_policy_mask = data['prefix_mask'].any(-1) # [No]
                         off_policy_logprob = log_prob[off_policy_mask]

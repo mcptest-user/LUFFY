@@ -168,6 +168,21 @@ deepspeed --master_port=$MASTER_PORT --master_addr=$MASTER_ADDR --include localh
 ```
 
 
+### RL w/ SFT Loss
+```bash
+  cd exp_scripts
+  bash train_sft_multitask.sh
+```
+
+### SFT + RL
+We use heldout data for RL training, following previous works like PRIME.
+```bash
+  cd data
+  python prepare_train_sft_rl.py
+  cd ../exp_scripts
+  bash train_sft_rl.sh
+```
+
 ## Inference
 
 Here’s an example of using LUFFY for inference:
