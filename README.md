@@ -5,6 +5,7 @@
   <img src="./figures/logo.png" alt="LUFFY Icon" width="50">
   LUFFY: Learning to Reason Under Off‑Policy Guidance
 </h1>
+<p align="center"><em>A general framework for off-policy learning in large reasoning models.</em></p>
 
 <div align="center">
   <img src="./figures/luffy_intro_new.jpg" alt="overview" style="width: 66%; height: auto;">
@@ -23,24 +24,43 @@
 ---
 
 # 📚 Overview
-- [🎉 News](#news)  
-- ✨ [Getting Started](#getting-started)  
+- 🎉 [News](#news)  
 - 📖 [Introduction](#introduction)  
+- ✨ [Getting Started](#getting-started)  
 - 🔧 [Usage](#usage)  
 - 📃 [Evaluation](#evaluation)  
 - 🎈 [Citation](#citation)  
 - 🌻 [Acknowledgement](#acknowledgement)  
 <!-- - 📈 [Star History](#star-history) -->
 
+
 ---
 
+
 # 🎉News
+- **[2025/05/30]** We integrate the implementation and scripts of other off-policy learning methods including SFT, SFT+RL and RL w/ SFT Loss (multi-task learning).
 - **[2025/05/21]** We have updated the paper [version](https://arxiv.org/abs/2504.14945), which re-evaluates all models using a more accurate verifier and adds comparisons with other off-policy learning methods, including RL with SFT Loss and SFT+RL.
 - **[2025/04/23]** Our paper now available on [alphaXiv](https://www.alphaxiv.org/abs/2504.14945)! We welcome feedback and discussion.
 - **[2025/04/23]** 🎉 Ranked **#1** of the day on [Huggingface Daily Papers](https://huggingface.co/papers/2504.14945).
-- **[2025/04/20]** The models and datasets are released on [HuggingFace](https://huggingface.co/collections/Elliott/luffy-rl-6804e1f5d1ebe66ba8ac92f4).
-- **[2025/04/20]** LUFFY codebase is released along with evaluation scripts. Try it out!
+<!-- - **[2025/04/20]** The models and datasets are released on [HuggingFace](https://huggingface.co/collections/Elliott/luffy-rl-6804e1f5d1ebe66ba8ac92f4).
+- **[2025/04/20]** LUFFY codebase is released along with evaluation scripts. Try it out! -->
 - **[2025/04/20]** LUFFY paper available on [arXiv](http://arxiv.org/abs/2504.14945). 
+
+
+
+---
+
+# 📖Introduction
+
+LUFFY is a reinforcement learning framework that bridges the gap between zero-RL and imitation learning by incorporating off-policy reasoning traces into the training process. Built upon GRPO, LUFFY combines on-policy rollouts with off-policy demonstrations during advantage estimation and introduces **policy shaping** via regularized importance sampling to emphasize low-probability yet crucial actions.
+
+![overview](./figures/luffy_performance.jpg)
+
+### Key Highlights:
+- **Off-Policy Guidance:** Seamlessly integrates external reasoning traces to bootstrap learning from stronger models.
+- **Dynamic Balance:** Learns when to imitate and when to explore, adapting over the course of training.
+- **Policy Shaping:** Emphasizes important actions often ignored in standard policy gradients, enabling better generalization.
+
 
 
 ---
@@ -80,18 +100,7 @@ LUFFY is built on top of the GRPO framework and supports plug-and-play integrati
 
 ---
 
-# 📖Introduction
 
-LUFFY is a reinforcement learning framework that bridges the gap between zero-RL and imitation learning by incorporating off-policy reasoning traces into the training process. Built upon GRPO, LUFFY combines on-policy rollouts with off-policy demonstrations during advantage estimation and introduces **policy shaping** via regularized importance sampling to emphasize low-probability yet crucial actions.
-
-![overview](./figures/luffy_performance.jpg)
-
-### Key Highlights:
-- **Off-Policy Guidance:** Seamlessly integrates external reasoning traces to bootstrap learning from stronger models.
-- **Dynamic Balance:** Learns when to imitate and when to explore, adapting over the course of training.
-- **Policy Shaping:** Emphasizes important actions often ignored in standard policy gradients, enabling better generalization.
-
----
 
 
 
