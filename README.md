@@ -121,6 +121,53 @@ We provide an example script to train LUFFY on our subset of OpenR1-Math-220k. Y
   bash train.sh
 ```
 
+## Other Off-Policy Baselines
+### SFT
+First clone the OpenRLHF repository and prepare the data to SFT format. 
+```bash
+git clone https://github.com/OpenRLHF/OpenRLHF
+cd data
+python prepare_sft.py
+```
+Then, you can run the SFT training command. 
+```
+RESULT_DIR="Your result directory"
+DATA_DIR="Your data directory"
+WANDB_KEY="Your Wandb Key"
+
+MODEL_PATH=Elliott/Qwen2.5-Math-7B-16k-think
+MASTER_ADDR=`scontrol show hostname $SLURM_JOB_NODELIST | head -n1`
+MASTER_PORT=$((RANDOM % 101 + 20000))
+DEVICES="0,1,2,3,4,5,6,7"
+deepspeed --master_port=$MASTER_PORT --master_addr=$MASTER_ADDR --include localhost:$DEVICES --module openrlhf.cli.train_sft \
+   --max_len 16384 \
+   --dataset $DATA_DIR \
+   --input_key prompt \
+   --output_key target \
+   --train_batch_size 64 \
+   --apply_chat_template \
+   --micro_train_batch_size 1 \
+   --max_samples 500000 \
+   --pretrain $MODEL_PATH \
+   --save_path $RESULT_DIR \
+   --logging_steps 1 \
+   --eval_steps -1 \
+   --zero_stage 2 \
+   --max_epochs 3 \
+   --adam_offload \
+   --packing_samples \
+   --bf16 \
+   --flash_attn \
+   --save_hf_ckpt \
+   --learning_rate 5e-5 \
+   --lr_warmup_ratio 0.1 \
+   --wandb_project r1_sft_distill \
+   --wandb_run_name qwen-7b-base-sft \
+   --use_wandb $WANDB_KEY \
+   --gradient_checkpointing
+```
+
+
 ## Inference
 
 Here’s an example of using LUFFY for inference:
@@ -154,6 +201,8 @@ print(outputs[0].outputs[0].text)
 | **Model**                          | **Huggingface** |  **Base Model** |
 |-----------------------------------|------------------|------------------|
 | LUFFY-Qwen-Math-7B-Zero | https://huggingface.co/Elliott/LUFFY-Qwen-Math-7B-Zero |  Qwen2.5-Math-7B |
+| LUFFY-Qwen-Math-7B-SFT | https://huggingface.co/Elliott/Qwen2.5-Math-7B-SFT | Qwen2.5-Math-7B |
+| LUFFY-Qwen-Math-7B-SFT-RL | https://huggingface.co/Elliott/Qwen2.5-Math-7B-SFT-RL | Qwen2.5-Math-7B |
 | LUFFY-Qwen-Math-1.5B-Zero | https://huggingface.co/Elliott/LUFFY-Qwen-Math-1.5B-Zero | Qwen2.5-Math-1.5B |
 | LUFFY-Qwen-Instruct-7B | https://huggingface.co/Elliott/LUFFY-Qwen-Instruct-7B | Qwen2.5-7B-Instruct |
 
@@ -274,3 +323,4 @@ If you find our model, data, or evaluation code useful, please kindly cite our p
       url={https://arxiv.org/abs/2504.14945}, 
 }
 ```
+
