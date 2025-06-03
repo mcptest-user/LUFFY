@@ -5,6 +5,7 @@
   <img src="./figures/logo.png" alt="LUFFY Icon" width="50">
   LUFFY: Learning to Reason Under Off‑Policy Guidance
 </h1>
+<p align="center"><em>A general framework for off-policy learning in large reasoning models.</em></p>
 
 <div align="center">
   <img src="./figures/luffy_intro_new.jpg" alt="overview" style="width: 66%; height: auto;">
@@ -14,42 +15,52 @@
 [![Paper](https://img.shields.io/badge/paper-A42C25?style=for-the-badge&logo=arxiv&logoColor=white)](http://arxiv.org/abs/2504.14945) [![alphaXiv](https://img.shields.io/badge/discussion-A42C25?style=for-the-badge&logo=arxiv&logoColor=white&color=blue
 )](https://www.alphaxiv.org/abs/2504.14945) [![Github](https://img.shields.io/badge/LUFFY-000000?style=for-the-badge&logo=github&logoColor=000&logoColor=white)](https://github.com/ElliottYan/LUFFY)   [![Hugging Face Collection](https://img.shields.io/badge/LUFFY_Collection-fcd022?style=for-the-badge&logo=huggingface&logoColor=000)](https://huggingface.co/collections/Elliott/luffy-rl-6804e1f5d1ebe66ba8ac92f4) [![Twitter](https://img.shields.io/badge/Twitter-%23000000.svg?style=for-the-badge&logo=twitter&logoColor=white)](https://x.com/yafuly/status/1914559433549676962)
 
-<div align="center" style="font-family: Arial, sans-serif; font-size: 16px;">
-  <p>
-    <a href="#news" style="text-decoration: none; font-weight: bold;">🎉 News</a> •
-    <a href="#links" style="text-decoration: none; font-weight: bold;">🔗 Links</a> •
-    <a href="#getting-started" style="text-decoration: none; font-weight: bold;">✨ Getting Started</a> •
-    <a href="#introduction" style="text-decoration: none; font-weight: bold;">📖 Introduction</a>
-  </p>
-  <p>
-    <a href="#usage" style="text-decoration: none; font-weight: bold;">🔧 Usage</a> •
-    <a href="#evaluation" style="text-decoration: none; font-weight: bold;">📃 Evaluation</a> •
-    <a href="#citation" style="text-decoration: none; font-weight: bold;">🎈 Citation</a> •
-    <a href="#acknowledgement" style="text-decoration: none; font-weight: bold;">🌻 Acknowledgement</a> •
-    <!-- <a href="#star-history" style="text-decoration: none; font-weight: bold;">📈 Star History</a> -->
-  </p>
-</div>
+
 
 
 
 </div>
 
 ---
+
+# 📚 Overview
+- 🎉 [News](#news)  
+- 📖 [Introduction](#introduction)  
+- ✨ [Getting Started](#getting-started)  
+- 🔧 [Usage](#usage)  
+- 📃 [Evaluation](#evaluation)  
+- 🎈 [Citation](#citation)  
+- 🌻 [Acknowledgement](#acknowledgement)  
+<!-- - 📈 [Star History](#star-history) -->
+
+
+---
+
 
 # 🎉News
+- **[2025/05/30]** We integrate the implementation and scripts of **other off-policy learning methods** including SFT, SFT+RL and RL w/ SFT Loss (multi-task learning).
 - **[2025/05/21]** We have updated the paper [version](https://arxiv.org/abs/2504.14945), which re-evaluates all models using a more accurate verifier and adds comparisons with other off-policy learning methods, including RL with SFT Loss and SFT+RL.
-- **[2025/04/23]** Our paper now available on [alphaXiv](https://www.alphaxiv.org/abs/2504.14945)! We welcome feedback and discussion.
+- **[2025/04/23]** Our paper now trending on [alphaXiv](https://www.alphaxiv.org/abs/2504.14945)! We welcome feedback and discussion.
 - **[2025/04/23]** 🎉 Ranked **#1** of the day on [Huggingface Daily Papers](https://huggingface.co/papers/2504.14945).
-- **[2025/04/20]** The models and datasets are released on [HuggingFace](https://huggingface.co/collections/Elliott/luffy-rl-6804e1f5d1ebe66ba8ac92f4).
-- **[2025/04/20]** LUFFY codebase is released along with evaluation scripts. Try it out!
 - **[2025/04/20]** LUFFY paper available on [arXiv](http://arxiv.org/abs/2504.14945). 
+
+<!-- - **[2025/04/20]** The models and datasets are released on [HuggingFace](https://huggingface.co/collections/Elliott/luffy-rl-6804e1f5d1ebe66ba8ac92f4).
+- **[2025/04/20]** LUFFY codebase is released along with evaluation scripts. Try it out! -->
 
 ---
 
-# 🔗Links
+# 📖Introduction
 
-- 📜 [Paper (arXiv)](https://arxiv.org/abs/2504.14945)  
-- 🤗 [HuggingFace Collection](https://huggingface.co/collections/Elliott/luffy-rl-6804e1f5d1ebe66ba8ac92f4)
+LUFFY is a reinforcement learning framework that bridges the gap between zero-RL and imitation learning by incorporating off-policy reasoning traces into the training process. Built upon GRPO, LUFFY combines on-policy rollouts with off-policy demonstrations during advantage estimation and introduces **policy shaping** via regularized importance sampling to emphasize low-probability yet crucial actions.
+
+![overview](./figures/luffy_performance.jpg)
+
+### Key Highlights:
+- **Off-Policy Guidance:** Seamlessly integrates external reasoning traces to bootstrap learning from stronger models.
+- **Dynamic Balance:** Learns when to imitate and when to explore, adapting over the course of training.
+- **Policy Shaping:** Emphasizes important actions often ignored in standard policy gradients, enabling better generalization.
+
+
 
 ---
 
@@ -88,18 +99,7 @@ LUFFY is built on top of the GRPO framework and supports plug-and-play integrati
 
 ---
 
-# 📖Introduction
 
-LUFFY is a reinforcement learning framework that bridges the gap between zero-RL and imitation learning by incorporating off-policy reasoning traces into the training process. Built upon GRPO, LUFFY combines on-policy rollouts with off-policy demonstrations during advantage estimation and introduces **policy shaping** via regularized importance sampling to emphasize low-probability yet crucial actions.
-
-![overview](./figures/luffy_performance.jpg)
-
-### Key Highlights:
-- **Off-Policy Guidance:** Seamlessly integrates external reasoning traces to bootstrap learning from stronger models.
-- **Dynamic Balance:** Learns when to imitate and when to explore, adapting over the course of training.
-- **Policy Shaping:** Emphasizes important actions often ignored in standard policy gradients, enabling better generalization.
-
----
 
 
 
@@ -123,7 +123,7 @@ We provide an example script to train LUFFY on our subset of OpenR1-Math-220k. Y
 
 ## Other Off-Policy Baselines
 ### SFT
-First clone the OpenRLHF repository and prepare the data to SFT format. 
+First clone the OpenRLHF repository and prepare the data to SFT format. *(We plan to integrate the SFT pipeline directly into LUFFY in the near future.)*
 ```bash
 git clone https://github.com/OpenRLHF/OpenRLHF
 cd data
@@ -225,6 +225,40 @@ print(outputs[0].outputs[0].text)
 
 # 📃Evaluation
 
+## Reproducing the Results 
+We currently support automated evaluation on six widely used mathematical reasoning benchmarks (AIME24/25, AMC, MATH-500, Minerva, and Olympiad) and three out-of-distribution tasks (ARC-c, GPQA-diamond, and MMLU-pro). The platform provides specialized system prompts for a range of RL models, including LUFFY, SimpleRL, OpenReasoner, PRIME, and OAT.
+
+You can reproduce our results by running the following commands:
+```bash
+ROOT=YOUR_ROOT_PATH
+DATA=$ROOT/data/valid.all.parquet
+
+OUTPUT_DIR=./results/
+mkdir -p $OUTPUT_DIR
+
+# If you want to evaluate other models, you can change the model path and name.
+MODEL_PATH=Elliott/LUFFY-Qwen-Math-7B-Zero
+MODEL_NAME=luffy
+
+if [ $MODEL_NAME == "eurus-2-7b-prime-zero" ]; then
+  TEMPLATE=prime
+elif [ $MODEL_NAME == "simple-rl-zero" ]; then
+  TEMPLATE=qwen
+else
+  TEMPLATE=own
+fi
+
+CUDA_VISIBLE_DEVICES=0,1,2,3 python eval_scripts/generate_vllm.py \
+  --model_path $MODEL_PATH \
+  --input_file $DATA \
+  --remove_system True \
+  --add_oat_evaluate True \
+  --output_file $OUTPUT_DIR/$MODEL_NAME.jsonl \
+  --template $TEMPLATE > $OUTPUT_DIR/$MODEL_NAME.log
+```
+
+
+
 ## LUFFY on Qwen2.5-Math-7B (zero-RL)
 LUFFY is evaluated on six competition-level benchmarks, achieving state-of-the-art results among all zero-RL methods. It surpasses both on-policy RL and imitation learning (SFT), especially in generalization:
 
@@ -285,35 +319,6 @@ We further compare LUFFY with alternative off-policy learning methods, including
 | Qwen2.5-7B-Instruct           | 11.7 | 7.5 | 43.8 | 71.8 | 30.9 | 40.4|  34.4|
 | **LUFFY-Qwen-Instruct-7B**             | **17.7** |  **14.8** | **50.9** | **82.0** | **31.3** | **47.4** | **40.7** |
 
-## Reproducing the Results 
-You can reproduce our results by running the following commands:
-```bash
-ROOT=YOUR_ROOT_PATH
-DATA=$ROOT/data/valid.all.parquet
-
-OUTPUT_DIR=./results/
-mkdir -p $OUTPUT_DIR
-
-# If you want to evaluate other models, you can change the model path and name.
-MODEL_PATH=Elliott/LUFFY-Qwen-Math-7B-Zero
-MODEL_NAME=luffy
-
-if [ $MODEL_NAME == "eurus-2-7b-prime-zero" ]; then
-  TEMPLATE=prime
-elif [ $MODEL_NAME == "simple-rl-zero" ]; then
-  TEMPLATE=qwen
-else
-  TEMPLATE=own
-fi
-
-CUDA_VISIBLE_DEVICES=0,1,2,3 python eval_scripts/generate_vllm.py \
-  --model_path $MODEL_PATH \
-  --input_file $DATA \
-  --remove_system True \
-  --add_oat_evaluate True \
-  --output_file $OUTPUT_DIR/$MODEL_NAME.jsonl \
-  --template $TEMPLATE > $OUTPUT_DIR/$MODEL_NAME.log
-```
 
 # 🌻Acknowledgement
 
