@@ -166,14 +166,20 @@ def main(input_file, output_file, model_path, debug=False, remove_system=True, t
                 labels = [False]
                 
         if labels is None:
-            if not add_oat_evaluate:
-                try:
-                    labels = labeling_responses([generated_text,], answer)
-                except Exception as e:
-                    labels = [False]
-            else: # use oat evaluate
-                new_label = oat_evaluate(generated_text, answer, fast=False)
-                new_label = new_label[1] == 1.0
+            try:
+                labels = labeling_responses([generated_text,], answer)
+            except Exception as e:
+                labels = [False]
+        
+        if add_oat_evaluate:
+            new_label = oat_evaluate(generated_text, answer, fast=False)
+            new_label = new_label[1] == 1.0
+            if any_true is True:
+                if labels[0] is False and new_label is True:
+                    diff_cnt += 1
+                    # breakpoint()
+                labels = [labels[0] or new_label]
+            else:
                 labels = [new_label]
         
         rets[data_sources[i]].append(labels[0])
