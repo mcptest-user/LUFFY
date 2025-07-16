@@ -118,6 +118,8 @@ class MIXDataParallelPPOActor(DataParallelPPOActor):
                         
                         sft_loss = compute_sft_pure_loss(log_prob=off_policy_logprob,
                                                         eos_mask=off_policy_eos_mask)
+                        if off_policy_logprob.numel() == 0:
+                            sft_loss = torch.tensor(0.0)
                         
                         on_policy_mask = ~off_policy_mask
                         on_policy_logprob = log_prob[on_policy_mask]
